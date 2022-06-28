@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/Chohanbin0511/chb0511.github.io#readme",
   "devDependencies": {
-    "vuepress": "^1.9.7"
+    "@vuepress/plugin-back-to-top": "^1.9.7",
+    "@vuepress/plugin-google-analytics": "^1.9.7",
+    "@vuepress/plugin-last-updated": "^1.9.7",
+    "vuepress": "^1.9.7",
+    "vuepress-plugin-code-copy": "^1.0.6"
   }
 }

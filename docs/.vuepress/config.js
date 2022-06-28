@@ -1,15 +1,42 @@
+const routes = ["Test1", "Test2"];
+
+const createSidebar = () => {
+  const sidebar = {};
+  for (const route of routes) {
+    Object.assign(sidebar, require("../" + route));
+  }
+  return sidebar;
+};
+
 module.exports = {
-  title: "title",
+  title: "한빈",
   description: "desc",
   themeConfig: {
-    nav: [{ text: "Github", link: "https://github.com/Chohanbin0511" }],
-    sidebar: getSidebarArr(),
+    nav: [
+      { text: "Github", link: "https://github.com/Chohanbin0511" },
+      { text: "Test1", link: "/Test1/" },
+      { text: "Test2", link: "/Test2/" },
+    ],
+    // sidebar: getSidebarArr(),
+    sidebar: createSidebar(),
+    lastUpdated: "최근변경일",
   },
   //가장 중요한 부분!
   //<username>.github.io 뒤에 주소가 붙으시면
   //아래와 같이 뒤 붙는 주소를 넣어주셔야합니다.
   //안그러면 css 가 반영이 안되요!! 꼭꼭 넣어주세요
   base: "/chb0511.github.io/",
+  plugins: [
+    ["@vuepress/back-to-top"],
+    ["@vuepress/last-updated"],
+    ["vuepress-plugin-code-copy"],
+    // [
+    //     "@vuepress/google-analytics",
+    //     {
+    //         ga: // UA-00000000-0
+    //     }
+    // ],
+  ],
 };
 
 function getSidebarArr() {
