@@ -30,6 +30,23 @@ module.exports = {
     ["@vuepress/back-to-top"],
     ["@vuepress/last-updated"],
     ["vuepress-plugin-code-copy"],
+    "@vuepress/pagination", //다음글, 이전글
+    [
+      "@vuepress/search",
+      {
+        //검색창
+        searchMaxSuggestions: 10,
+      },
+    ],
+    [
+      "@vuepress/active-header-links",
+      {
+        //헤더 바로가기
+        sidebarLinkSelector: ".sidebar-link",
+        headerAnchorSelector: ".header-anchor",
+        headerTopOffset: 120,
+      },
+    ],
     // [
     //     "@vuepress/google-analytics",
     //     {
