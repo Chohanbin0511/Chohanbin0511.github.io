@@ -27,9 +27,9 @@
     "nodemon": "^2.0.18",
     "vuepress": "^1.9.7",
     "vuepress-plugin-code-copy": "^1.0.6",
-    "watchpack": "^1.6.1"
+    "watchpack": "^1.7.4"
   },
   "resolutions": {
-    "watchpack": "1.6.1"
+    "watchpack": "1.7.4"
   }
 }
