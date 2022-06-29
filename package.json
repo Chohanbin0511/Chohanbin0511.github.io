@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "nodemon --ext md,vue --watch .vuepress --watch . --exec vuepress dev docs",
+    "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
   "repository": {
@@ -22,17 +22,7 @@
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/plugin-google-analytics": "^1.9.7",
     "@vuepress/plugin-last-updated": "^1.9.7",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
-    "nodemon": "^2.0.18",
     "vuepress": "^1.9.7",
-    "vuepress-plugin-code-copy": "^1.0.6",
-    "watchpack": "^1.7.4"
-  },
-  "resolutions": {
-    "watchpack": "1.7.4"
-  },
-  "engines": {
-    "node": ">=12"
-  } 
+    "vuepress-plugin-code-copy": "^1.0.6"
+  }
 }
