@@ -2,10 +2,13 @@
   "name": "chb0511.github.io",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "getBuild.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "doc": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -19,10 +22,6 @@
   },
   "homepage": "https://github.com/Chohanbin0511/chb0511.github.io#readme",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.9.7",
-    "@vuepress/plugin-google-analytics": "^1.9.7",
-    "@vuepress/plugin-last-updated": "^1.9.7",
-    "vuepress": "^1.9.7",
-    "vuepress-plugin-code-copy": "^1.0.6"
+    "vuepress": "^1.9.7"
   }
 }
