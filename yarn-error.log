@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\USER\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add v0.24.5
+  C:\Program Files\nodejs\node.exe C:\Users\USER\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add v1.12.3
 
 PATH: 
-  C:\Users\USER\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\USER\bin;C:\Program Files (x86)\NAT Service;C:\adb\platform-tools;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Java\jdk1.8.0_261\bin;C:\Program Files\PuTTY;C:\Program Files (x86)\PuTTY;C:\Users\USER\platform-tools_r30.0.5-windows\platform-tools;C:\Program Files\nodejs;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn;C:\Ruby31-x64\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Users\USER\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA 2020.2\bin;C:\Users\USER\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\USER\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;C:\Program Files\Git\opt\yarn-[version]\bin
+  C:\Users\USER\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\USER\bin;C:\Program Files (x86)\NAT Service;C:\adb\platform-tools;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Java\jdk1.8.0_261\bin;C:\Program Files\PuTTY;C:\Program Files (x86)\PuTTY;C:\Users\USER\platform-tools_r30.0.5-windows\platform-tools;C:\Program Files\nodejs;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn;C:\Ruby31-x64\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Users\USER\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA 2020.2\bin;C:\Users\USER\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\USER\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.19
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/v0.24.5: Not found
+  Error: https://registry.yarnpkg.com/v1.12.3: Not found
       at Request.params.callback [as _callback] (C:\Users\USER\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66145:18)
       at Request.self.callback (C:\Users\USER\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
       at Request.emit (events.js:315:20)
@@ -53,12 +53,6 @@ npm manifest:
       "@vuepress/plugin-last-updated": "^1.9.7",
       "vuepress": "^1.9.7",
       "vuepress-plugin-code-copy": "^1.0.6"
-    },
-    "dependencies": {
-      "latest": "^0.2.0",
-      "next-auth": "^4.7.0",
-      "package-name": "^0.1.0",
-      "webpack-dev-middleware": "^3.6.0"
     }
   }
 

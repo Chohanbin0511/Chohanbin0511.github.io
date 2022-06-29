@@ -24,11 +24,5 @@
     "@vuepress/plugin-last-updated": "^1.9.7",
     "vuepress": "^1.9.7",
     "vuepress-plugin-code-copy": "^1.0.6"
-  },
-  "dependencies": {
-    "latest": "^0.2.0",
-    "next-auth": "^4.7.0",
-    "package-name": "^0.1.0",
-    "webpack-dev-middleware": "^3.6.0"
   }
 }
