@@ -1,4 +1,4 @@
-const routes = ["Guide", "Test2"];
+const routes = ["Guide", "Vue"];
 
 const createSidebar = () => {
   const sidebar = {};
@@ -15,7 +15,7 @@ module.exports = {
     nav: [
       { text: "Github", link: "https://github.com/Chohanbin0511" },
       { text: "개발가이드", link: "/Guide/" },
-      { text: "Test2", link: "/Test2/" },
+      { text: "VUE", link: "/Vue/" },
     ],
     sidebar: createSidebar(),
     lastUpdated: "최근변경일",
