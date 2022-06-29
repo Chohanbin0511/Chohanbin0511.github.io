@@ -14,7 +14,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "Github", link: "https://github.com/Chohanbin0511" },
-      { text: "Test1", link: "/Test1/" },
+      { text: "개발가이드", link: "/Guide/" },
       { text: "Test2", link: "/Test2/" },
     ],
     sidebar: createSidebar(),
