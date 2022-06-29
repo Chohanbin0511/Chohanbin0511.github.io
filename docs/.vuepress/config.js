@@ -30,7 +30,7 @@ module.exports = {
     ["@vuepress/back-to-top"],
     ["@vuepress/last-updated"],
     ["vuepress-plugin-code-copy"],
-    ["@vuepress/pagination"], //다음글, 이전글
+    // ["@vuepress/pagination"], //다음글, 이전글
     [
       "@vuepress/search",
       {
