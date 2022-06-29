@@ -1,4 +1,4 @@
-const routes = ["Test1", "Test2"];
+const routes = ["Guide", "Test2"];
 
 const createSidebar = () => {
   const sidebar = {};
