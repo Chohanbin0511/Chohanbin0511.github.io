@@ -16,7 +16,7 @@ jobs:
       run: npm run build
 
     - name: Deploy Build Files
-      uses: jenkey2011/vuepress-deploy@1.0.1
+      uses: jenkey2011/vuepress-deploy@master
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         TARGET_BRANCH: gh-pages
