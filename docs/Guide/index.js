@@ -1,1 +1,1 @@
-module.exports = require("../../getBuild")("Test1");
+module.exports = require("../../getBuild")("Guide");
