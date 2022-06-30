@@ -1,4 +1,4 @@
-# VUETIFY
+# Vuetify
 
 ### Vue 기반 UI 프레임워크
 

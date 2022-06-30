@@ -1,1 +1,1 @@
-# Vuefity Guide
+### Vuefity Guide
