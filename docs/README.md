@@ -1,10 +1,2 @@
 
-# hi chohbin
-# hi chohbin
-# hi chohbin
-# hi chohbin
-# hi chohbin
-# hi chohbin
-# hi chohbin
-# hi chohbin
-# hi chohbin
+# Hi chohbin
