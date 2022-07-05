@@ -1,4 +1,4 @@
-# VUE3
+# Vue3 Tutorial
 
 [VSCode 단축키](https://www.notion.so/VSCode-292bd7c2336545df8a46f75e8c845032)
 
