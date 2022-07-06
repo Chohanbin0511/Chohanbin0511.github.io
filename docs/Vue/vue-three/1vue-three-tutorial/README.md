@@ -81,7 +81,7 @@ message.value = 'Changed'
 <h1>{{ message.split('').reverse().join('') }}</h1>
 ```
 
-- ****Declarative Rendering 실행 예시****
+- **Declarative Rendering 실행 예시**
 
 ```jsx
 <script setup>
@@ -376,7 +376,7 @@ todos.value = todos.value.filter(/* ... */)
 
 자세한 내용 `v-for`: **[가이드 - 목록 렌더링](https://vuejs.org/guide/essentials/list.html)**
 
-- ****List Rendering 예시****
+- **List Rendering 예시**
 
 ```jsx
 <script setup>
@@ -462,7 +462,7 @@ Computed property는 계산된 다른 반응 상태를 종속성으로 추적합
 
 다음은 계산된 `filteredTodos`속성을 추가하고 계산 논리를 구현한 로직입니다.  완료된 항목을 숨길 때 할 일을 선택하면 즉시 숨겨집니다.
 
-- ****Computed Property 예시****
+- **Computed Property 예시**
 
 ```jsx
 <script setup>
@@ -552,7 +552,7 @@ onMounted(() => {
 
  **[자세한 내용은 수명 주기 다이어그램](https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram)** 을 확인 하세요.
 
-- ****Lifecycle and Template Refs (예시)****
+- **Lifecycle and Template Refs (예시)**
 
 ```jsx
 <script setup>
@@ -599,7 +599,7 @@ watch(count, (newCount) => {
 
 버튼을 클릭할 때 새 할 일을 가져오는 감시자를 구현한 예시입니다.
 
-- ****Watchers 예시****
+- **Watchers 예시**
 
 ```jsx
 <script setup>
