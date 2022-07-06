@@ -530,6 +530,566 @@ const props = withDefaults(defineProps<Props>(), {
 Module 실행 의미의 차이로 인해 `<script setup>` 내부의 코드는 SFC의 Context에 의존합니다. 외부 `.js` 또는 `.ts` 파일로 이동하면 개발자와 도구 모두에게 혼란을 초래할 수 있습니다. 따라서 `<script setup>`은 `src` 속성과 함께 사용할 수 없습니다.
 
 ---
-## 주요 변경 사항
 
-## 새로운 구성요소
+## 3. Teleport
+
+[**VUE3 Teleport 강의 영상**](https://vueschool.io/lessons/vue-3-teleport?friend=vuejs)
+
+`<Teleport>`는 구성 요소 템플릿의 일부를 해당 구성 요소의 DOM 계층 구조 외부에 있는 DOM 노드로 "텔레포트"할 수 있게 해주는 내장 구성 요소입니다.
+
+---
+
+****기본 사용법****
+
+ 때때로 다음과 같은 상황을 마주칠 겁니다. compoenent’s template의 일부는 논리적으로 해당 template에 속하지만, 시각적인 관점에서는 Vue application 외부의 DOM 다른 어딘가에 표시되어야 합니다.
+
+ 가장 일반적인 예시는 full-screen modal을 빌드할 때입니다.  이상적으로는 modal의 button과 modal 자체가 모두 modal의 open/close 상태와 관련이 있기 때문에 동일한 component 내에 있기를 원합니다. 그러나 이는 modal이 버튼과 함께 렌더링되고 응용 프로그램의 DOM 계층 구조에 깊숙이 중첩되어 있음을 의미합니다. 이는 CSS를 통해 modal을 배치할 때 몇 가지 문제가 있습니다.
+
+다음 HTML 구조
+
+```jsx
+<div class="outer">
+  <h3>Vue Teleport Example</h3>
+  <div>
+    <MyModal />
+  </div>
+</div>
+```
+
+다음은 `<MyModal>` 구현
+
+```jsx
+<script setup>
+import { ref } from 'vue'
+
+const open = ref(false)
+</script>
+
+<template>
+  <button @click="open = true">Open Modal</button>
+
+  <div v-if="open" class="modal">
+    <p>Hello from the modal!</p>
+    <button @click="open = false">Close</button>
+  </div>
+</template>
+
+<style scoped>
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 20%;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+}
+</style>
+```
+
+component에는 modal의 opend을 트리거하는 `<button>`과 modal의 내용과 self-close 버튼을 포함하는 `.modal` 클래스가 있는 `<div>`가 포함되어 있습니다**.**
+
+초기 HTML 구조 내에서 이 component를 사용할 때 여러 가지 잠재적인 문제가 있습니다.
+
+ 
+
+- `position: fixed`는 조상 요소에 `transform`,  `perspective`  또는 `filter` property set가 없는 경우에만 viewport를 기준으로 요소를 배치합니다. 예를 들어, CSS 변환을 사용하여 조상 `<div class="outer">`에 애니메이션을 적용하려는 경우 modal layout이 깨집니다!
+- modal의 `z-index`는 포함하는 요소에 의해 제한됩니다. `<div class="outer">`와 겹치고 `z-index`가 더 높은 또 다른 element가 있으면 modal을 덮을 것입니다.
+
+`<Teleport>`는 중첩된 DOM 구조에서 벗어날 수 있도록 하여, 이런 문제를 해결할 수 있는 방법을 제공합니다. `<Teleport>`를 사용하도록 `<MyModal>`을 수정해 보겠습니다**.**
+
+```jsx
+<button @click="open = true">Open Modal</button>
+
+<Teleport to="body">
+  <div v-if="open" class="modal">
+    <p>Hello from the modal!</p>
+    <button @click="open = false">Close</button>
+  </div>
+</Teleport>
+```
+
+`<Teleport>`의 대상은 CSS 선택기 문자열 또는 실제 DOM 노드를 필요로 합니다. 여기서 본질적으로 Vue에게 "이 templeta 조각을 `body` Tag로 **Teleport**"하라고 지시합니다.
+
+`<Teleport>`와 결합 **`[<Transition>](https://vuejs.org/guide/built-ins/transition.html)`**하여 애니메이션 모달을 만들 수 있습니다.
+
+[**Modal 예시**](https://vuejs.org/examples/#modal)
+
+<aside>
+💡 `<Teleport>` component가 mounted 될 때 대상으로의 Teleport는 이미 DOM에 있어야 합니다. 이상적으로는 전체 Vue 애플리케이션 외부의 element여야 합니다. Vue에서 렌더링한 다른 element를 대상으로 하는 경우 해당 요소가 `<Teleport>` 전에 moutned 되었는지 확인해야 합니다.
+
+</aside>
+
+---
+
+****Components와 함께 사용****
+
+`<Teleport>`는 렌더링된 DOM 구조만 변경합니다. Components의 Logical 계층에는 영향을 주지 않습니다. 즉, `<Teleport>`에 component가 포함되어 있으면 해당 component는 `<Teleport>`를 포함하는 상위 구성 요소의 논리적 자식으로 유지됩니다. Props 전달 및 event Emits은 계속 동일한 방식으로 작동합니다.
+
+ 또한 상위 component의 주입이 예상대로 작동하고 하위 component가 실제 콘텐츠가 이동한 위치에 배치되는 대신 Vue Devtools의 상위 component 아래에 중첩된다는 것을 의미합니다.
+
+---
+
+****Teleport 비활성화****
+
+경우에 따라 `<Teleport>`를 조건부로 `disable` 할 수 있습니다. 예를 들어 component  를 데스크톱용 overlay로 렌더링하지만 Mobile에서는 인라인으로 렌더링할 수 있습니다. `<Teleport>`는 동적으로 토글할 수 있는 disabled prop을 지원합니다.
+
+```jsx
+<Teleport :disabled="isMobile">
+  ...
+</Teleport>
+```
+
+`isMobile`미디어 쿼리 변경을 감지 하여 상태를 동적으로 업데이트할 수 있는 곳 입니다.
+
+---
+
+****동일한 대상에 Multiple Teleports****
+
+일반적으로 `<Modal>` 여러 인스턴스가 동시에 활성화될 가능성이 있는 재사용 가능한 구성 요소입니다. 이러한 종류의 시나리오에서는 여러 `<Teleport>`구성 요소가 해당 콘텐츠를 동일한 대상 요소에 탑재할 수 있습니다. 순서는 단순 추가입니다. 이후 마운트는 대상 요소 내에서 이전 마운트 다음에 위치합니다.
+
+일반적으로 여러 instance가 동시에 활성화되어 재사용 가능한 `<Modal>` component입니다. 이런 시나리오에서는 여러 `<Teleport>` component가 해당 콘텐츠를 동일한 대상 element에 탑재할 수 있습니다.  순서는 단순 추가입니다. 이후 마운트는 대상 요소 내에서 이전 마운트 다음에 위치합니다.
+
+다음 사용법을 감안할 때:
+
+```jsx
+<Teleport to="#modals">
+  <div>A</div>
+</Teleport>
+<Teleport to="#modals">
+  <div>B</div>
+</Teleport>
+```
+
+렌더링된 결과
+
+```jsx
+<div id="modals">
+  <div>A</div>
+  <div>B</div>
+</div>
+```
+
+- **`[<Teleport>`API 참조](https://vuejs.org/api/built-in-components.html#teleport)**
+- **[SSR에서 텔레포트 다루기](https://vuejs.org/guide/scaling-up/ssr.html#teleports)**
+
+---
+
+## 4. Fragments
+
+****개요****
+
+Vue 3에서 component는 이제 multi-root node components, 즉 fragements을 공식 지원합니다.
+
+---
+
+**2.x Syntax**
+
+2.x에서는 multi-root components가 지원되지 않았으며 사용자가 실수로 component를 만들 때 경고를 표시했습니다. 이 오류를 수정하기 위해 많은 구성 요소가 단일 `<div>`로 래핑됩니다.
+
+```jsx
+<!-- Layout.vue -->
+<template>
+  <div>
+    <header>...</header>
+    <main>...</main>
+    <footer>...</footer>
+  </div>
+</template>
+```
+
+---
+
+**3.x Syntax**
+
+3.x에서는 이제 multi-root components를 사용할 수 있습니다. 그러나 이를 위해서는 개발자가 속성을 배포해야 하는 위치를 명시적으로 정의해야 합니다.
+
+```jsx
+<!-- Layout.vue -->
+<template>
+  <header>...</header>
+  <main v-bind="$attrs">...</main>
+  <footer>...</footer>
+</template>
+```
+
+속성 상속이 작동하는 방식에 대한 자세한 내용은 [**Fallthrough Attributes**](https://vuejs.org/guide/components/attrs.html#fallthrough-attributes) 를 참조하세요.
+
+---
+
+## 5. Emits Component Option
+
+**emits**
+
+component에서 내보낸 custom 이벤트를 선언합니다.
+
+ Type
+
+```tsx
+interface ComponentOptions {
+  emits?: ArrayEmitsOptions | ObjectEmitsOptions
+}
+
+type ArrayEmitsOptions = string[]
+
+type ObjectEmitsOptions = { [key: string]: EmitValidator | null }
+
+type EmitValidator = (...args: unknown[]) => boolean
+```
+
+**Details**
+
+Emit된 이벤트는 두 가지 형식 입니다.
+
+- 문자열 배열(Array of Strings)을 사용하는 간단한 형식
+- 각 property key가 이벤트의 이름이고 값이 `null` 또는 Validation function인 개체를 사용하는 전체 형식입니다.
+
+Validation function은 component의 `$emit` 호출에 전달된 추가 인수를 받습니다. 
+
+예를 들어 `this.$emit('foo', 1)`이 호출되면 `foo`에 대한 해당 Validation function은 argument `1`을 수신합니다. Validation function은 이벤트 argument가 유효한지 여부를 나타내는 부울을 반환해야 합니다.
+
+`emits` option은 기본 DOM 이벤트 리스너가 아닌 component 이벤트 리스너로 간주되는 이벤트 리스너에 영향을 미칩니다. 선언된 이벤트에 대한 리스너는 component의 `$attrs` Object 에서 제거되므로 compoent’s의 root element로 전달되지 않습니다. 자세한 내용은 **[Fallthrough Attributes](https://vuejs.org/guide/components/attrs.html)** 을 참조하세요.
+
+**Example**
+
+Array syntax:
+
+```tsx
+export default {
+  emits: ['check'],
+  created() {
+    this.$emit('check')
+  }
+}
+```
+
+Object syntax:
+
+```tsx
+export default {
+  emits: {
+    // no validation
+    click: null,
+
+    // with validation
+    submit: (payload) => {
+      if (payload.email && payload.password) {
+        return true
+      } else {
+        console.warn(`Invalid submit event payload!`)
+        return false
+      }
+    }
+  }
+}
+```
+
+---
+
+## 6. CreateRenderer API from @vue/runtime-core
+ to create custom renderers
+
+**createRenderer()**
+
+사용자 지정 렌더러를 만듭니다. 플랫폼별 노드 생성 및 조작 API를 제공하여 Vue의 핵심 런타임을 활용하여 비 DOM 환경을 대상으로 할 수 있습니다
+
+Type
+
+```tsx
+function createRenderer<HostNode, HostElement>(
+  options: RendererOptions<HostNode, HostElement>
+): Renderer<HostElement>
+
+interface Renderer<HostElement> {
+  render: RootRenderFunction<HostElement>
+  createApp: CreateAppFunction<HostElement>
+}
+
+interface RendererOptions<HostNode, HostElement> {
+  patchProp(
+    el: HostElement,
+    key: string,
+    prevValue: any,
+    nextValue: any,
+    // the rest is unused for most custom renderers
+    isSVG?: boolean,
+    prevChildren?: VNode<HostNode, HostElement>[],
+    parentComponent?: ComponentInternalInstance | null,
+    parentSuspense?: SuspenseBoundary | null,
+    unmountChildren?: UnmountChildrenFn
+  ): void
+  insert(
+    el: HostNode,
+    parent: HostElement,
+    anchor?: HostNode | null
+  ): void
+  remove(el: HostNode): void
+  createElement(
+    type: string,
+    isSVG?: boolean,
+    isCustomizedBuiltIn?: string,
+    vnodeProps?: (VNodeProps & { [key: string]: any }) | null
+  ): HostElement
+  createText(text: string): HostNode
+  createComment(text: string): HostNode
+  setText(node: HostNode, text: string): void
+  setElementText(node: HostElement, text: string): void
+  parentNode(node: HostNode): HostElement | null
+  nextSibling(node: HostNode): HostNode | null
+
+  // optional, DOM-specific
+  querySelector?(selector: string): HostElement | null
+  setScopeId?(el: HostElement, id: string): void
+  cloneNode?(node: HostNode): HostNode
+  insertStaticContent?(
+    content: string,
+    parent: HostElement,
+    anchor: HostNode | null,
+    isSVG: boolean
+  ): [HostNode, HostNode]
+}
+```
+
+**예시** 
+
+```tsx
+import { createRenderer } from '@vue/runtime-core'
+
+const { render, createApp } = createRenderer({
+  patchProp,
+  insert,
+  remove,
+  createElement
+  // ...
+})
+
+// `render` is the low-level API
+// `createApp` returns an app instance
+export { render, createApp }
+
+// re-export Vue core APIs
+export * from '@vue/runtime-core'
+```
+
+Vue 자체 `@vue/runtime-dom`는 **[동일한 API를 사용하여 구현됩니다](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts)** . 
+
+더 간단한 구현을 **`[@vue/runtime-test](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts)`**위해 Vue 자체 단위 테스트를 위한 private 패키지가 무엇인지 확인하세요.
+
+---
+
+## 7. SFC State-driven CSS Variables (v-bind in <style>)
+
+****`v-bind()` in CSS**
+
+SFC `<style>` 태그는 `v-bind` CSS 기능을 사용하여 CSS 값을 동적 구성 요소 상태에 연결하는 것을 지원합니다.
+
+```tsx
+<template>
+  <div class="text">hello</div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      color: 'red'
+    }
+  }
+}
+</script>
+
+<style>
+.text {
+  color: v-bind(color);
+}
+</style>
+```
+
+구문은 `<script setup>`과 함께 작동하며 JavaScript 표현식을 지원합니다(따옴표로 묶어야 함)
+
+```tsx
+<script setup>
+const theme = {
+  color: 'red'
+}
+</script>
+
+<template>
+  <p>hello</p>
+</template>
+
+<style scoped>
+p {
+  color: v-bind('theme.color');
+}
+</style>
+```
+
+실제 값은 hasg된 CSS 사용자 정의 속성으로 컴파일되므로 CSS는 여전히 정적입니다. 
+
+Custom 속성은 인라인 스타일을 통해 구성 요소의 root element에 적용되고 소스 값이 변경되면 반응적으로 업데이트됩니다.
+
+---
+
+## 8. SFC <style scoped> can now include global rules or rules that target only slotted content
+
+[URL참고](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
+
+---
+## 9. Suspense
+
+<aside>
+💡 `<Suspense>` 는 실험적인 기능입니다. 안정적인 상태를 보장하지 않으며, 이전에 API가 변경될 수 있습니다.
+
+</aside>
+
+`<Suspense>`구성 요소 트리에서 비동기 종속성을 조정하기 위한 기본 제공 Component입니다. 
+
+구성 Component 트리 아래에 여러 중첩된 비동기 종속성이 해결될 때까지 기다리는 동안 로드 상태를 렌더링할 수 있습니다.
+
+---
+
+**Async Dependencies (비동기 종속성)**
+
+`<Suspense>`가 해결하려고 하는 것과 이러한 비동기 종속성과 상호 작용하는 방식을 설명하기 위해 다음과 같은 구성 요소 계층 구조를 살펴보겠습니다.
+
+```bash
+<Suspense>
+└─ <Dashboard>
+   ├─ <Profile>
+   │  └─ <FriendStatus> (component with async setup())
+   └─ <Content>
+      ├─ <ActivityFeed> (async component)
+      └─ <Stats> (async component)
+```
+
+component tree에는 먼저 확인할 async resource(비동기 리소스)에 따라 렌더링이 달라지는 여러 중첩 components가 있습니다. `<Suspense>`가 없으면 각각 고유한 loading/error 및 loaded states를 처리해야 합니다. 최악의 시나리오에서는 페이지에 3개의 로딩 스피너가 표시되고 콘텐츠가 다른 시간에 표시될 수 있습니다.
+
+`<Suspense>` component는 이러한 중첩된 비동기 종속성이 해결될 때까지 기다리는 동안 top-level loading/error states를 표시할 수 있는 기능을 제공합니다.
+
+`<Suspense>`가 기다릴 수 있는 두 가지 유형의 비동기 종속성이 있습니다.
+
+1. 비동기 `setup()` hook가 있는 component. 여기에는 top-level `await` expressions(표현식)과 함께 `<script setup>`을 사용하는 component가 포함됩니다.
+2. [Async Component (비동기 컴포넌트)](https://vuejs.org/guide/components/async.html)
+
+****`async setup()`****
+
+Composition API component의 `setup()` hook는 async (비동기) 일 수 있습니다.
+
+```jsx
+export default {
+  async setup() {
+    const res = await fetch(...)
+    const posts = await res.json()
+    return {
+      posts
+    }
+  }
+}
+```
+
+`<script setup>`을 사용하는 경우 top-level await 표현식이 있으면 component가 자동으로 비동기 종속성을 갖게 됩니다.
+
+```jsx
+<script setup>
+const res = await fetch(...)
+const posts = await res.json()
+</script>
+
+<template>
+  {{ posts }}
+</template>
+```
+
+**Async Components (비동기 구성 요소)**
+
+**Async Components**는 기본적으로 "**중단 가능**"합니다.
+
+ 즉, 상위 체인에 `<Suspense>`가 있는 경우 해당 `<Suspense>`의 비동기 종속성으로 처리됩니다.
+
+ 이 경우 로딩 상태는 `<Suspense>`에 의해 제어되며 component 자체의 loading, error, delay 및 timeout options은 무시됩니다.
+
+**Async Components**는 `Suspense` control을 선택 해제하고 component가 options에서 `suspensible: false`를 지정하여 항상 자체 loaing state를 제어하도록 할 수 있습니다.
+
+---
+
+**Loading State**
+
+`<Suspense>` component에는 `#default` 및 `#fallback`이라는 두 개의 slots 이 있습니다. 두 slots 모두 하나의 직계 child node만 허용합니다. 가능한 경우 기본 slot의 node가 표시됩니다. 그렇지 않은 경우 대체 slot의 node가 대신 표시됩니다.
+
+```html
+<Suspense>
+  <!-- component with nested async dependencies -->
+  <Dashboard />
+
+  <!-- loading state via #fallback slot -->
+  <template #fallback>
+    Loading...
+  </template>
+</Suspense>
+```
+
+ 초기 렌더링 시 `<Suspense>`는 default slot content를 메모리에 렌더링합니다. 프로세스 중에 비동기 종속성이 발생하면 **보류(pending)** 상태가 됩니다. **보류(pending)** 상태 동안 대체 콘텐츠가 표시됩니다. 발생한 모든 비동기 종속성이 해결되면 `<Suspense>`가 **해결된 (resolved)** 상태로 전환되고 해결된 기본 slot content가 표시됩니다.
+
+ 초기 렌더링 중에 비동기 종속성이 발생하지 않은 경우 `<Suspense>`는 직접 **해결된 (resolved)** 상태로 전환됩니다.
+
+**해결된 (resolved)**상태에서 `<Suspense>`는 `#default` 슬롯의 root node가 교체되는 경우에만 **보류(pending)**상태로 되돌아갑니다. 
+
+트리 깊숙이 중첩된 새로운 비동기 종속성으로 인해 `<Suspense>`가 **보류(pending)** 상태로 되돌아가지 않습니다.
+
+**revert**가 발생하면 대체 content가 즉시 표시되지 않습니다. 대신 `<Suspense>`는 새 content와 해당 비동기 종속성이 해결될 때까지 기다리는 동안 이전 `#default` content를 표시합니다. 이 동작은 timeout prop으로 구성할 수 있습니다. 새로운 default content를 렌더링하는 데 시간 초과보다 오래 걸리는 경우 `<Suspense>`가 fallback content로 전환됩니다. 시간 초과 값이 0이면 default content가 교체될 때 fallback content가 즉시 표시됩니다.
+
+---
+
+**Events**
+
+`<Suspense>` component는 3가지 이벤트( `pending`, `resolve`, `fallback`)를 내보냅니다. 
+
+ `pending` 이벤트는 **보류 (pending)** 상태에 들어갈 때 발생합니다. new content가 default slot에서 확인을 완료하면 확인 이벤트가 발생합니다. fallback slot의 content가 표시될 때 대체 이벤트가 시작됩니다.
+
+예를 들어 이벤트를 사용하여 새 compoent가 load되는 동안 이전 DOM 앞에 load indicator를 표시할 수 있습니다.
+
+---
+
+**Error Handling**
+
+`<Suspense>`는 현재 coponent 자체를 통해 오류 처리를 제공하지 않습니다. 그러나 `[errorCaptured](https://vuejs.org/api/options-lifecycle.html#errorcaptured)` 옵션 또는 `[onErrorCaptured()](https://vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured)` hook를 사용하여 `<Suspense>`의 상위 component에서 비동기 오류를 캡처하고 처리할 수 있습니다.
+
+---
+
+****Combining with Other Components(다른 component 와 결합)****
+
+ `<Transition>` 및 `<KeepAlive>` component와 함께 `<Suspense>`를 사용하려는 것이 일반적입니다. 이러한 compoennt의 중첩 순서는 모든 component가 올바르게 작동하도록 하는 데 중요합니다.
+
+ 또한 이러한 component는 **[Vue Router](https://router.vuejs.org/)**의 `<RouterView>` component와 함께 사용되는 경우가 많습니다.
+
+다음 예제에서는 이러한 component가 모두 예상대로 작동하도록 중첩하는 방법을 보여줍니다.
+
+ 더 간단한 조합의 경우 필요하지 않은 component를 제거할 수 있습니다.
+
+```html
+<RouterView v-slot="{ Component }">
+  <template v-if="Component">
+    <Transition mode="out-in">
+      <KeepAlive>
+        <Suspense>
+          <!-- main content -->
+          <component :is="Component"></component>
+
+          <!-- loading state -->
+          <template #fallback>
+            Loading...
+          </template>
+        </Suspense>
+      </KeepAlive>
+    </Transition>
+  </template>
+</RouterView>
+```
+
+ **Vue Router**에는 dynamic imports를 사용하여 **component를 지연 로드([Lazily loading components](https://router.vuejs.org/guide/advanced/lazy-loading.html))**하는 기능이 내장되어 있습니다.
+
+ 이들은 비동기 구성 요소와 구별되며 현재 `<Suspense>`를 트리거하지 않습니다. 
+
+그러나 여전히 비동기 component 를 하위 항목으로 가질 수 있으며 일반적인 방식으로 `<Suspense>`를 트리거할 수 있습니다.
+
+---
