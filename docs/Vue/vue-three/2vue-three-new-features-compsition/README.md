@@ -1,6 +1,4 @@
-# Vue 3 Migration
-
-## Vue 3의 새로운 기능
+# Vue 3의 새로운 기능
 
 - Composition API
 - SFC Composition API Syntax Sugar (  `<script setup>`)
@@ -14,7 +12,7 @@
 
 ---
 
-### 1. Composition API
+## 1. Composition API
 
   Compositon API는 options을 선언하는 대신 가져온 함수를 사용하여 Vue 구성 요소를 작성할 수 있는 API입니다. 다음 API를 포괄하는 용어입니다.
 
@@ -188,8 +186,350 @@ React Hooks는 구성 요소가 업데이트될 때마다 반복적으로 호출
 
 ---
 
-### 2. SFC Composition API Syntax Sugar (  `<script setup>`)
+## 2. SFC Composition API Syntax Sugar (  <script setup>)
 
+`<script setup>` Single File Compoents(SFCs) 내에서 Composition API를 사용하기 위한 Compile-time 구문입니다. SFC와 Compositions API를 모두 사용하는 경우 권장되는 구문입니다.
+
+일반 `<script>` 구문보다 많은 이점을 제공합니다.
+
+- 더 적은 상용구로 더 간결한 코드
+- 순수 TypeScript를 사용하여 소품 및 방출된 이벤트를 선언하는 기능
+- 더 나은 런타임 성능(템플릿은 중간 프록시 없이 동일한 범위의 렌더 함수로 컴파일됨)
+- 더 나은 IDE 유형 추론 성능(언어 서버가 코드에서 유형을 추출하는 작업 감소)
+
+---
+
+**기본 구문**
+
+구문을 선택하려면 `<script>` 블록에 `setup` 속성을 추가하세요.
+
+```jsx
+<script setup>
+console.log('hello script setup')
+</script>
+```
+
+내부 코드는 components `setup()` 기능의 내용으로 컴파일됩니다 . 즉 , 구성 요소를 처음 가져올 때 한 번만 실행되는 normal `<script>` 과 구성 요소를 처음 가져올 때 한 번만 실행되지만 `<script setup>` 내부의 코드는 구성 요소의 인스턴스가 생성될 때마다 실행됩니다.
+
+★ ****최상위 바인딩은 템플릿에 노출됩니다.****
+
+`<script setup>` 을 사용할때 내부에 선언된 모든 최상위 바인딩 (변수, 함수 선언 및 가져오기 포함)
+
+`<script setup>` 은 템플릿에서 직접 사용할 수 있습니다.
+
+```jsx
+<script setup>
+// variable
+const msg = 'Hello!'
+
+// functions
+function log() {
+  console.log(msg)
+}
+</script>
+
+<template>
+  <button @click="log">{{ msg }}</button>
+</template>
+```
+
+Import한 바인딩도 같은 방식으로 노출됩니다 . 즉, `methods` 옵션을 통해 노출하지 않고도 템플릿 표현식에서 가져온 helper function을 직접 사용할 수 있습니다.
+
+즉, `methods` 옵션을 통해 노출하지 않고도 템플릿 표현식에서 가져온 도우미 함수를 직접 사용할 수 있습니다.
+
+```jsx
+<script setup>
+import { capitalize } from './helpers'
+</script>
+
+<template>
+  <div>{{ capitalize('hello') }}</div>
+</template>
+```
+
+---
+
+**Reactivity**
+
+**[Reactivity APIs](https://vuejs.org/api/reactivity-core.html)**를 사용하여 반응성 상태를 명시적으로 생성해야 합니다 . `setup()` function 에서 반환된 값과 유사하게 ref는 템플릿에서 참조될 때 자동으로 래핑이 해제됩니다.
+
+```jsx
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">{{ count }}</button>
+</template>
+```
+
+---
+
+****구성 요소 사용****
+
+범위의 값은 `<script setup>`사용자 정의 구성 요소 태그 이름으로 직접 사용할 수도 있습니다
+
+```jsx
+<script setup>
+import MyComponent from './MyComponent.vue'
+</script>
+
+<template>
+  <MyComponent />
+</template>
+```
+
+`MyComponent`변수로 참조됩니다 . JSX를 사용한 적이 있는 경우 e mental model과 유사합니다. 해당하는 kebab-case `<my-component>`도 템플릿에서 작동하지만 일관성을 위해 PascalCase 구성 요소 태그를 사용하는 것이 좋습니다.  또한 기본 사용자 정의 요소와 구별하는 데 도움이 됩니다.
+
+<aside>
+💡 vue2 에선 kebab-case 사용했지만 vue3에선 코드 일관성을위해 PascalCase 사용
+
+</aside>
+
+★ ****동적 구성요소****
+
+`:is`구성 요소는 문자열 키 아래에 등록되는 대신 변수로 참조되므로 내부에서 동적 구성 요소를 사용할 때 동적 바인딩 `<script setup>` 을 사용해야 합니다
+
+```jsx
+<script setup>
+import Foo from './Foo.vue'
+import Bar from './Bar.vue'
+</script>
+
+<template>
+  <component :is="Foo" />
+  <component :is="someCondition ? Foo : Bar" />
+</template>
+```
+
+components 를 삼항 표현식에서 변수로 사용할 수 있습니다
+
+★ **재귀 구성요소**
+
+SFC는 파일 이름을 통해 암시적으로 자신을 참조할 수 있습니다. 예를 들어 이름이 지정된 파일 `<FooBar/>` 는 템플릿에서 `FooBar.vue`와 같이 자신을 참조할 수 있습니다 .
+
+가져온 구성 요소보다 우선 순위가 낮습니다. 구성 요소의 유추된 이름과 충돌하는 명명된 가져오기가 있는 경우 가져오기에 별칭을 지정할 수 있습니다.
+
+```jsx
+import { FooBar as FooBarChild } from './components'
+```
+
+★ ****네임스페이스 구성요소****
+
+`<Foo.Bar>`개체 속성 아래에 중첩된 구성 요소를 참조하기 위해 점과 함께 구성 요소 태그를 사용할 수 있습니다 . 단일 파일에서 여러 구성요소를 가져올 때 유용합니다.
+
+```jsx
+<script setup>
+import * as Form from './form-components'
+</script>
+
+<template>
+  <Form.Input>
+    <Form.Label>label</Form.Label>
+  </Form.Input>
+</template>
+```
+
+---
+
+****사용자 지정 지시문 사용****
+
+전역적으로 등록된 사용자 지정 지시문은 정상적으로 작동합니다. 로컬 사용자 지정 지시문은 `vNameOfDirective` 에 명시적으로 등록할 필요는 없지만 `<script setup>` 명명 체계를 따라야 합니다 
+
+```jsx
+<script setup>
+const vMyDirective = {
+  beforeMount: (el) => {
+    // do something with the element
+  }
+}
+</script>
+<template>
+  <h1 v-my-directive>This is a Heading</h1>
+</template>
+```
+
+다른 곳에서 지시문을 가져오는 경우 필요한 명명 체계에 맞게 이름을 바꿀 수 있습니다.
+
+```jsx
+<script setup>
+import { myDirective as vMyDirective } from './MyDirective.js'
+</script>
+```
+
+---
+
+****defineProps() & defineEmits()****
+
+전체 유형 추론 지원과 함께 `props` 및 `emits`과 같은 옵션을 선언하려면 `<script setup>` 내에서 자동으로 사용할 수 있는 `defineProps` 및 `defineEmits` API를 사용할 수 있습니다.
+
+```jsx
+<script setup>
+const props = defineProps({
+  foo: String
+})
+
+const emit = defineEmits(['change', 'delete'])
+// setup code
+</script>
+```
+
+- `defineProps` 와 `defineEmits` 은 `<script setup>` 내부에서만 사용할 수 있는 **컴파일러 매크로** 입니다.  Import할 필요가 없으며 `<script setup>`처리될 때 컴파일됩니다.
+- `defineProps`옵션은 `props`과 동일한 값을 허용하는 반면 `defineEmits`옵션은 `emits`과 동일한 값을 허용합니다 .
+- `defineProps` 와 `defineEmits` 에 전달된 옵션을 기반으로 적절한 유형 추론을 제공합니다 .
+- 전달된 옵션 `defineProps`, `defineEmits` 은 설정에서 모듈 범위로 호이스트됩니다 따라서 옵션은 설정 범위에서 선언된 지역 변수를 참조할 수 없습니다. 그렇게 하면 컴파일 오류가 발생합니다. 그러나 가져온 바인딩도 모듈 범위에 있으므로 참조 할 수 있습니다.
+
+**[TypeScript를 사용하는 경우 순수 유형 주석을 사용하여 props 및](https://vuejs.org/api/sfc-script-setup.html#typescript-only-features)** emission을 선언하는 것도 가능합니다 .
+
+---
+
+****defineExpose()****
+
+사용하는 구성 요소 는 기본적 `<script setup>`으로 닫혀 있습니다. 즉 템플릿 참조 또는 체인`$parent` 을 통해 검색되는 구성 요소의 공개 인스턴스는 `<script setup>`  내부에 선언된 바인딩을 노출하지 않습니다.
+
+`<script setup>` component의 속성을 명시적으로 노출하려면 `defineExpose`컴파일러 매크로를 사용합니다.
+
+```jsx
+<script setup>
+import { ref } from 'vue'
+
+const a = 1
+const b = ref(2)
+
+defineExpose({
+  a,
+  b
+})
+</script>
+```
+
+부모가 템플릿 참조를 통해 이 구성 요소의 인스턴스를 가져오면 검색된 인스턴스는 모양 `{ a: number, b: number }`이 됩니다(참조는 일반 인스턴스와 마찬가지로 자동으로 래핑 해제됨).
+
+---
+
+`**useSlots()`&`useAttrs()`**
+
+템플릿에서 `$slots` 및 `$attrs`로 직접 액세스할 수 있기 때문에 `<script setup>` 내에서 `slots` 및 `attrs` 의 사용은 비교적 드물어야 합니다. 드물게 필요한 경우 `useSlots`및 `useAttrs` helpers를 각각 사용합니다.
+
+```jsx
+<script setup>
+import { useSlots, useAttrs } from 'vue'
+
+const slots = useSlots()
+const attrs = useAttrs()
+</script>
+```
+
+`useSlots`및 `useAttrs`는 `setupContext.slots` 및 `setupContext.attrs`에 해당하는 항목을 반환하는 실제 런타임 함수입니다. 일반 composition API 함수에서도 사용할 수 있습니다
+
+---
+
+**일반 `<script>` 와 함께 사용**
+
+`<script setup>`은 일반 `<script>`와 함께 사용할 수 있습니다. 다음을 수행해야 하는 경우 일반 `<script>`가 필요할 수 있습니다.
+
+- `<script setup>`에서 표현할 수 없는 옵션을 선언하십시오.
+- 명명된 내보내기를 선언합니다.
+- 부작용을 실행하거나 한 번만 실행되어야 하는 개체를 만듭니다.
+
+```jsx
+<script>
+// normal <script>, executed in module scope (only once)
+runSideEffectOnce()
+
+// declare additional options
+export default {
+  inheritAttrs: false,
+  customOptions: {}
+}
+</script>
+
+<script setup>
+// executed in setup() scope (for each instance)
+</script>
+```
+
+---
+
+**최상위 `await`**
+
+최상위 `await`는 `<script setup>` 내에서 사용할 수 있습니다. 결과 코드는 `async setup()`으로 컴파일됩니다.
+
+```jsx
+<script setup>
+const post = await fetch(`/api/post/1`).then((r) => r.json())
+</script>
+```
+
+또한 awaited 표현식은 `await` 후 현재 구성 요소 인스턴스 컨텍스트를 유지하는 형식으로 자동 컴파일됩니다.
+
+<aside>
+💡 `async setup()`은 현재 아직 실험적인 기능인 `Suspense`와 함께 사용해야 합니다. 향후 이를 마무리하고 문서화할 계획입니다. 하지만 지금 궁금하다면 [테스트](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts)를 참조하여 작동 방식을 확인할 수 있습니다.
+
+</aside>
+
+---
+
+****TypeScript 전용 기능****
+
+★ ****Type-only props/emit 선언****
+
+`Props`및 `emits`은 리터럴 유형 인수를 `defineProps` 또는 `defineEmits`에 전달하여 pure-type syntax을 사용하여 선언할 수도 있습니다.
+
+```jsx
+const props = defineProps<{
+  foo: string
+  bar?: number
+}>()
+
+const emit = defineEmits<{
+  (e: 'change', id: number): void
+  (e: 'update', value: string): void
+}>()
+```
+
+`defineProps` 또는 `defineEmits`는 runtime 선언 또는 type 선언만 사용할 수 있습니다. 두 가지를 동시에 사용하면 컴파일 오류가 발생합니다.
+
+type 선언을 사용할 때 이중 선언의 필요성을 제거하고 올바른 런타임 동작을 보장하기 위해 정적 분석에서 동등한 runtime 선언이 자동으로 생성됩니다.
+
+- 개발 모드에서 컴파일러는 유형에서 해당 런타임 유효성 검사를 유추하려고 시도합니다. 예를 들어 여기 `foo: String`은 `foo: string` 유형에서 유추됩니다. 유형이 가져온 유형에 대한 참조인 경우 컴파일러에 외부 파일 정보가 없기 때문에 추론된 결과는 `foo: null` ( `any` type과 동일)이 됩니다.
+- prod 모드에서 컴파일러는 번들 크기를 줄이기 위해 배열 형식 선언을 생성합니다(여기서 props는`['foo', 'bar']`로 컴파일됩니다).
+- 내보낸 코드는 여전히 유효한 입력이 있는 TypeScript이며 다른 도구에서 추가로 처리할 수 있습니다
+
+현재로서는 올바른 정적 분석을 보장하기 위해 type 선언 인수가 다음 중 하나여야 합니다.
+
+- A type literal
+- 동일한 파일에 있는 Interface 또는 type literal에 대한 참조
+
+현재  complex 유형 및 다른 파일에서 type Imports는 지원되지 않습니다. 향후 type Imports를 지원할 수 있습니다.
+
+★ **type 선언을 사용할 때 기본 props 값**
+
+Type 전용 `defineProps`선언의 한 가지 단점은 props에 대한 기본값을 제공할 방법이 없다는 것입니다. 이 문제를 해결하기 위해 `withDefaults`컴파일러 매크로도 제공됩니다.
+
+```jsx
+export interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  msg: 'hello',
+  labels: () => ['one', 'two']
+})
+```
+
+동등한 runtime props `default` 옵션으로 컴파일됩니다. 또한 `withDefaults` helpers는 기본값에 대한 유형 검사를 제공하고 반환된 `props`유형에 기본값이 선언된 속성에 대해 제거된 선택적 플래그가 있는지 확인합니다.
+
+---
+
+****Restrictions(제한)****
+
+Module 실행 의미의 차이로 인해 `<script setup>` 내부의 코드는 SFC의 Context에 의존합니다. 외부 `.js` 또는 `.ts` 파일로 이동하면 개발자와 도구 모두에게 혼란을 초래할 수 있습니다. 따라서 `<script setup>`은 `src` 속성과 함께 사용할 수 없습니다.
+
+---
 ## 주요 변경 사항
 
 ## 새로운 구성요소

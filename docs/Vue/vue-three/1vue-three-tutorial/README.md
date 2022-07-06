@@ -34,7 +34,7 @@ Hello World!
 
 ---
 
-## 2. ****Declarative Rendering(선언적 렌더링)****
+## 2. Declarative Rendering(선언적 렌더링)
 
 아래 코드는 Vue SFC(Single File Component)입니다.  SFC는 파일 내부에 작성되어 HTML, CSS및 JavaScript를 캡슐화하여 재사용 가능한 코드블록입니다.
 
@@ -338,7 +338,7 @@ Oh no 😢
 
 ---
 
-## 7. ****List Rendering (목록 렌더링)****
+## 7. List Rendering (목록 렌더링)
 
 지시문을 사용하여 `v-for`소스 배열을 기반으로 요소 목록을 렌더링할 수 있습니다
 
@@ -422,7 +422,7 @@ function removeTodo(todo) {
 
 ---
 
-## 8. ****Computed Property (계산된 속성)****
+## 8. Computed Property (계산된 속성)
 
 7번의 Todo List에 계속 작업을 이어갑니다.  이미 각 할 일에 토글 기능을 추가했습니다.  각 todo 객체에 속성을 추가 `v-model`하고 체크박스에 바인딩하는 데 사용합니다
 
@@ -520,7 +520,7 @@ function removeTodo(todo) {
 
 ---
 
-## 9. ****Lifecycle and Template Refs (수명주기 및 템플릿 참조)****
+## 9. Lifecycle and Template Refs (수명주기 및 템플릿 참조)
 
 지금까지 Vue는 반응성 및 선언적 렌더링 덕분에 모든 DOM 업데이트를 처리해 왔습니다. 그러나 필연적으로 DOM을 수동으로 작업해야 하는 경우가 있습니다.
 
@@ -572,7 +572,7 @@ onMounted(() => {
 
 ---
 
-## 10. ****Watchers (감시자)****
+## 10. Watchers (감시자)
 
 때로는 "부작용"을 반응하여 수행해야 합니다. 
 
@@ -633,7 +633,7 @@ watch(todoId, fetchData)
 
 ---
 
-## 11. ****Components****
+## 11. Components
 
 지금까지 우리는 단일 구성 요소로만 작업했습니다. Vue 애플리케이션은 일반적으로 중첩된 구성 요소로 생성됩니다.
 
@@ -665,7 +665,7 @@ import ChildComp from './ChildComp.vue'
 
 ---
 
-## 12. ****Props****
+## 12. Props
 
 **자식 컴포넌트는 props** 를 통해 부모로부터 입력을 받을 수 있습니다 . 
 
@@ -709,7 +709,7 @@ const greeting = ref('Hello from parent')
 
 ---
 
-## 13. ****Emits****
+## 13. Emits
 
 props를 받는 것 외에도 자식 구성 요소는 부모에게 이벤트를 내보낼 수도 있습니다
 
@@ -753,7 +753,7 @@ const childMsg = ref('No child msg yet')
 
 ---
 
-## 14. ****Slots (슬롯)****
+## 14. Slots (슬롯)
 
 props를 통해 데이터를 전달하는 것 외에도 부모 구성 요소는 **슬롯** 을 통해 템플릿 조각을 자식에게 전달할 수도 있습니다 .
 
