@@ -186,7 +186,7 @@ React Hooks는 구성 요소가 업데이트될 때마다 반복적으로 호출
 
 ---
 
-## 2. SFC Composition API Syntax Sugar (  <script setup>)
+## 2. SFC Composition API Syntax Sugar
 
 `<script setup>` Single File Compoents(SFCs) 내에서 Composition API를 사용하기 위한 Compile-time 구문입니다. SFC와 Compositions API를 모두 사용하는 경우 권장되는 구문입니다.
 
@@ -876,7 +876,7 @@ Vue 자체 `@vue/runtime-dom`는 **[동일한 API를 사용하여 구현됩니
 
 ---
 
-## 7. SFC State-driven CSS Variables (v-bind in <style>)
+## 7. SFC State-driven CSS Variables (v-bind in style)
 
 ****`v-bind()` in CSS**
 
@@ -930,7 +930,7 @@ Custom 속성은 인라인 스타일을 통해 구성 요소의 root element에 
 
 ---
 
-## 8. SFC <style scoped> can now include global rules or rules that target only slotted content
+## 8. SFC can now include global rules or rules that target only slotted content
 
 [URL참고](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 
