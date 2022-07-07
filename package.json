@@ -1,5 +1,5 @@
 {
-  "name": "chb0511.github.io",
+  "name": "chohanbin0511.github.io",
   "version": "1.0.0",
   "description": "",
   "main": "getBuild.js",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chohanbin0511/chb0511.github.io.git"
+    "url": "git+https://github.com/Chohanbin0511/chohanbin0511.github.io.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Chohanbin0511/chb0511.github.io/issues"
+    "url": "https://github.com/Chohanbin0511/chohanbin0511.github.io/issues"
   },
-  "homepage": "https://github.com/Chohanbin0511/chb0511.github.io#readme",
+  "homepage": "https://github.com/Chohanbin0511/chohanbin0511.github.io#readme",
   "devDependencies": {
     "vuepress": "^1.9.7"
   }
