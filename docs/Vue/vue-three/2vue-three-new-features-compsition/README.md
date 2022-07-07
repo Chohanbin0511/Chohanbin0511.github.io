@@ -1,4 +1,4 @@
-# Vue 3의 새로운 기능
+# Vue3의 새로운 기능
 
 - Composition API
 - SFC Composition API Syntax Sugar (  `<script setup>`)

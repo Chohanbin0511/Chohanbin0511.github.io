@@ -1,7 +1,5 @@
 # Vue3 Tutorial
 
-[VSCode 단축키](https://www.notion.so/VSCode-292bd7c2336545df8a46f75e8c845032)
-
 ## 1. Vue3 시작하기
 
 브라우저에서 바로 Vue로 작업하여 스터디를 진행했습니다.
