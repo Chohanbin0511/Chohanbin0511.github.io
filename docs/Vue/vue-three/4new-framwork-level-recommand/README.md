@@ -12,7 +12,7 @@ Vue3의 지원 라이브러리가 업데이트 되었습니다. 다음은 새로
 
 ---
 
-### 1. Details (세부사항)
+## 1. Details (세부사항)
 
 **Build Toolchain**
 
@@ -43,7 +43,7 @@ npm init vue@3
 
 ---
 
-### 2. Vue Router (뷰 라우터)
+## 2. Vue Router (뷰 라우터)
 
 Vue Router 4.0은 Vue3의 지원을 제공하며 자체적으로 여러 주요 변경사항이 있습니다. 
 
@@ -55,7 +55,7 @@ Vue Router 4.0은 Vue3의 지원을 제공하며 자체적으로 여러 주요 �
 
 ---
 
-### 3. State Management (상태관리)
+## 3. State Management (상태관리)
 
 [Pinia](https://pinia.vuejs.org/) 는 새롭게 권장되는 대규모 상태 관리 솔루션입니다. Pinia는 Vuex 5의 프로토타입으로 만들어졌으며 이제 Vuex 5에 대해 계획한 것을 사실상 구현하는 단계로 발전했습니다. 
 
@@ -69,7 +69,7 @@ Vuex 4.0은 또한 3.x와 거의 동일한 API로 Vue 3 지원을 제공하며 V
 
 ---
 
-### 4. **IDE Support (IDE 지원)**
+## 4. **IDE Support (IDE 지원)**
 
 [Volar](https://github.com/johnsoncodehk/volar) 는 템플릿 표현식에 대한 전체 유형 추론을 포함하여 Vue SFC에 대한 TypeScript 지원이 크게 개선된 새로운 공식 VSCode 확장입니다.
 
@@ -77,7 +77,7 @@ Vuex 4.0은 또한 3.x와 거의 동일한 API로 Vue 3 지원을 제공하며 V
 
 ---
 
-### 5. Devtools EXtension (Devtools 확장)
+## 5. Devtools EXtension (Devtools 확장)
 
 devtools 확장은 Vue 2와 Vue 3을 모두 지원하기 위해 주요 업데이트(v6으로 출시)를 받았습니다. 이전에 베타 채널을 통해 v6을 설치했다면 지금 제거하고 안정적인 채널에서 확장을 설치할 수 있습니다.
 
@@ -86,7 +86,7 @@ devtools 확장은 Vue 2와 Vue 3을 모두 지원하기 위해 주요 업데이
 
 ---
 
-### 6. TypeScript Support (타입스크립트 지원)
+## 6. TypeScript Support (타입스크립트 지원)
 
 이제 [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) 를 사용하여 명령줄에서 Vue SFC에 대한 정의 파일을 유형 확인하고 생성할 수 있습니다 .
 
@@ -94,12 +94,12 @@ devtools 확장은 Vue 2와 Vue 3을 모두 지원하기 위해 주요 업데이
 
 ---
 
-### 7. **Static Site Generator (정적 사이트 생성기)**
+## 7. **Static Site Generator (정적 사이트 생성기)**
 
 [VitePress](https://vitepress.vuejs.org/) 는 Vue 3 + Vite를 기반으로 구축된 VuePress의 영적 계승자입니다. 훨씬 우수한 개발 경험을 제공하고 더 빠른 사이트를 생성합니다.
 
 ---
 
-### 8. **JSX**
+## 8. **JSX**
 
 Vue 3에 대한 JSX 지원은 이제 `[@vue/babel-plugin-jsx](https://github.com/vuejs/babel-plugin-jsx)`.
