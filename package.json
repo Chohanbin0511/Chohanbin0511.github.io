@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Chohanbin0511/Chohanbin0511.github.io#readme",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.9.7",
     "vuepress": "^1.9.7"
   }
 }

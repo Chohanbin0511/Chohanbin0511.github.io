@@ -29,7 +29,20 @@ module.exports = {
   // base: "/Chohanbin0511.github.io/",
   plugins: [
     ["@vuepress/back-to-top"],
-    ["@vuepress/last-updated"],
+    [
+      "@vuepress/last-updated",
+      {
+        transformer: (timestamp, lang) => {
+          // Don't forget to install moment yourself
+          const moment = require("moment");
+          moment.locale(lang);
+          return moment(timestamp).fromNow();
+        },
+        dateOptions: {
+          hour12: false,
+        },
+      },
+    ],
     ["vuepress-plugin-code-copy"],
     // ["@vuepress/pagination"], //다음글, 이전글
     [
@@ -45,7 +58,7 @@ module.exports = {
         //헤더 바로가기
         sidebarLinkSelector: ".sidebar-link",
         headerAnchorSelector: ".header-anchor",
-        headerTopOffset: 120,
+        // headerTopOffset: 120,
       },
     ],
     // [
