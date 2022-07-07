@@ -61,6 +61,7 @@ module.exports = {
         // headerTopOffset: 120,
       },
     ],
+    ["@vuepress/nprogress"],
     // [
     //     "@vuepress/google-analytics",
     //     {
