@@ -24,21 +24,21 @@
 - **(breaking) `[v-bind="object"`는 이제 순서를 구분합니다](https://v3-migration.vuejs.org/breaking-changes/v-bind.html)**
 - **(breaking) `[v-on:event.native` 수정자가 제거되었습니다.](https://v3-migration.vuejs.org/breaking-changes/v-on-native-modifier-removed.html)**
 
-## 3. ****Components (컴포넌트)****
+## 3. **Components (컴포넌트)**
 
 - **(breaking) [functional components는 일반 기능을 사용해서만 생성할 수 있습니다.](https://v3-migration.vuejs.org/breaking-changes/functional-components.html)**
 - **(breaking) Single-file component(SFC) <template>의 functional 속성 및 기능적 component 옵션은 더 이상 사용되지 않습니다. (url은 위와 같음)**
 - **(new) [비동기 Components를 생성하려면 `defineAsyncComponent` 메서드가 필요합니다.](https://v3-migration.vuejs.org/breaking-changes/async-components.html)**
 - **(new) [Component 이벤트는 이제 `emits` 옵션으로 선언되어야 합니다.](https://v3-migration.vuejs.org/breaking-changes/emits-option.html)**
 
-## 4. ****Render Function (랜더 기능)****
+## 4. **Render Function (랜더 기능)**
 
 - **(breaking) [렌더링 기능 API가 변경됨](https://v3-migration.vuejs.org/breaking-changes/)**
 - **(breaking)** **`[$scopedSlots` 속성이 제거되고 모든 슬롯이 `$slots`를 통해 함수로 노출됩니다.](https://v3-migration.vuejs.org/breaking-changes/slots-unification.html)**
 - **(new) [이제 비동기 Comonents를 생성하려면 `defineAsyncComponent` 메서드가 필요합니다.](https://v3-migration.vuejs.org/breaking-changes/async-components.html)**
 - **(breaking) `[$attrs`에는 이제 `class` 및 `style` 속성이 포함됩니다.](https://v3-migration.vuejs.org/breaking-changes/attrs-includes-class-style.html)**
 
-## 5. ****Custom Elements (사용자 정의)****
+## 5. **Custom Elements (사용자 정의)**
 
 - **[(breaking) 이제 템플릿 컴파일 중에 사용자 정의 요소 검사가 수행됩니다.](https://v3-migration.vuejs.org/breaking-changes/custom-elements-interop.html)**
 - **(breaking)  [Special `is` 사용은 예약된 `<component>` 태그로만 제한됩니다.](https://v3-migration.vuejs.org/breaking-changes/custom-elements-interop.html)**
@@ -59,7 +59,7 @@
 - **(breaking) [Mounted된 application은 mounted element를 대체하지 않습니다.](https://v3-migration.vuejs.org/breaking-changes/mount-changes.html)**
 - **(breaking) [Lifecycle  `hook:` 이벤트 접두사가 `vnode-`로 변경됨](https://v3-migration.vuejs.org/breaking-changes/vnode-lifecycle-events.html)**
 
-## 7. Removed APIs (****제거된 API)****
+## 7. Removed APIs (**제거된 API)**
 
 - **[`v-on` 수정자로 `keyCode` 지원](https://v3-migration.vuejs.org/breaking-changes/keycode-modifiers.html)**
 - [**$on, $off and $once instance methods**](https://v3-migration.vuejs.org/breaking-changes/events-api.html)
