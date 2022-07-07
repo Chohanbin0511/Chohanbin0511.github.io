@@ -69,7 +69,7 @@ Vuex 4.0은 또한 3.x와 거의 동일한 API로 Vue 3 지원을 제공하며 V
 
 ---
 
-### 4. ****IDE Support (IDE 지원)****
+### 4. **IDE Support (IDE 지원)**
 
 [Volar](https://github.com/johnsoncodehk/volar) 는 템플릿 표현식에 대한 전체 유형 추론을 포함하여 Vue SFC에 대한 TypeScript 지원이 크게 개선된 새로운 공식 VSCode 확장입니다.
 
@@ -94,7 +94,7 @@ devtools 확장은 Vue 2와 Vue 3을 모두 지원하기 위해 주요 업데이
 
 ---
 
-### 7. ****Static Site Generator (정적 사이트 생성기)****
+### 7. **Static Site Generator (정적 사이트 생성기)**
 
 [VitePress](https://vitepress.vuejs.org/) 는 Vue 3 + Vite를 기반으로 구축된 VuePress의 영적 계승자입니다. 훨씬 우수한 개발 경험을 제공하고 더 빠른 사이트를 생성합니다.
 
