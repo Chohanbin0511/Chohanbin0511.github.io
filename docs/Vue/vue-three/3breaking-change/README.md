@@ -16,8 +16,8 @@ Vue 2의 모든 Vue 3 주요 변경 사항
 - **(breaking)[동일한 요소에 사용될 때 `v-if` 및 `v-for` 우선순위가 변경됨](https://v3-migration.vuejs.org/breaking-changes/v-if-v-for.html)**
 
 <aside>
-💡 **2.x에서 동일한 요소에 v-if와 v-for를 사용할 때 v-for가 우선합니다.
-3.x에서 v-if는 항상 v-for보다 우선 순위가 높습니다.**
+💡 2.x에서 동일한 요소에 v-if와 v-for를 사용할 때 v-for가 우선합니다.
+3.x에서 v-if는 항상 v-for보다 우선 순위가 높습니다.
 
 </aside>
 
@@ -65,8 +65,8 @@ Vue 2의 모든 Vue 3 주요 변경 사항
 - [**$on, $off and $once instance methods**](https://v3-migration.vuejs.org/breaking-changes/events-api.html)
 - [**Filters**](https://v3-migration.vuejs.org/breaking-changes/filters.html)
 - [**Inline templates attributes**](https://v3-migration.vuejs.org/breaking-changes/inline-template-attribute.html)
-- `[$children` instance property](https://v3-migration.vuejs.org/breaking-changes/children.html)
-- `[propsData` option](https://v3-migration.vuejs.org/breaking-changes/props-data.html)
+- **[`$children` instance property](https://v3-migration.vuejs.org/breaking-changes/children.html)**
+- **[`propsData` option](https://v3-migration.vuejs.org/breaking-changes/props-data.html)**
 - **`$destroy` instance method. 사용자는 더 이상 개별 Vue components의 Lifecycle를 수동으로 관리해서는 안 됩니다.**
 - **Global functions `set` 및 `delelte`, instance method의 `$set` 및 `$delete`. 프록시 기반 변경 감지에는 더 이상 필요하지 않습니다.**
 
