@@ -11,8 +11,8 @@ Vue 2의 모든 Vue 3 주요 변경 사항
 
 ## 2. Template Directives (템플릿 지시문)
 
-- **(breaking) `[v-bind.sync`를 대체하여 구성 요소의 `v-model` 사용이 재작업되었습니다.](https://v3-migration.vuejs.org/breaking-changes/v-model.html)**
-- **(breaking) `[<template v-for>` 및 non-`v-for` node의 `key` 사용이 변경되었습니다.](https://v3-migration.vuejs.org/breaking-changes/key-attribute.html)**
+- **(breaking) [`v-bind.sync`를 대체하여 구성 요소의 `v-model` 사용이 재작업되었습니다.](https://v3-migration.vuejs.org/breaking-changes/v-model.html)**
+- **(breaking) [`<template v-for>` 및 non-`v-for` node의 `key` 사용이 변경되었습니다.](https://v3-migration.vuejs.org/breaking-changes/key-attribute.html)**
 - **(breaking)[동일한 요소에 사용될 때 `v-if` 및 `v-for` 우선순위가 변경됨](https://v3-migration.vuejs.org/breaking-changes/v-if-v-for.html)**
 
 <aside>
@@ -21,8 +21,8 @@ Vue 2의 모든 Vue 3 주요 변경 사항
 
 </aside>
 
-- **(breaking) `[v-bind="object"`는 이제 순서를 구분합니다](https://v3-migration.vuejs.org/breaking-changes/v-bind.html)**
-- **(breaking) `[v-on:event.native` 수정자가 제거되었습니다.](https://v3-migration.vuejs.org/breaking-changes/v-on-native-modifier-removed.html)**
+- **(breaking) [`v-bind="object"`는 이제 순서를 구분합니다](https://v3-migration.vuejs.org/breaking-changes/v-bind.html)**
+- **(breaking) [`v-on:event.native` 수정자가 제거되었습니다.](https://v3-migration.vuejs.org/breaking-changes/v-on-native-modifier-removed.html)**
 
 ## 3. **Components (컴포넌트)**
 
@@ -34,9 +34,9 @@ Vue 2의 모든 Vue 3 주요 변경 사항
 ## 4. **Render Function (랜더 기능)**
 
 - **(breaking) [렌더링 기능 API가 변경됨](https://v3-migration.vuejs.org/breaking-changes/)**
-- **(breaking)** **`[$scopedSlots` 속성이 제거되고 모든 슬롯이 `$slots`를 통해 함수로 노출됩니다.](https://v3-migration.vuejs.org/breaking-changes/slots-unification.html)**
+- **(breaking)** **[`$scopedSlots` 속성이 제거되고 모든 슬롯이 `$slots`를 통해 함수로 노출됩니다.](https://v3-migration.vuejs.org/breaking-changes/slots-unification.html)**
 - **(new) [이제 비동기 Comonents를 생성하려면 `defineAsyncComponent` 메서드가 필요합니다.](https://v3-migration.vuejs.org/breaking-changes/async-components.html)**
-- **(breaking) `[$attrs`에는 이제 `class` 및 `style` 속성이 포함됩니다.](https://v3-migration.vuejs.org/breaking-changes/attrs-includes-class-style.html)**
+- **(breaking) [`$attrs`에는 이제 `class` 및 `style` 속성이 포함됩니다.](https://v3-migration.vuejs.org/breaking-changes/attrs-includes-class-style.html)**
 
 ## 5. **Custom Elements (사용자 정의)**
 
@@ -53,7 +53,7 @@ Vue 2의 모든 Vue 3 주요 변경 사항
 - **mixins의 `data` 옵션이 이제 얕게 병합되었습니다.**
 - **(breaking) [속성 강제 전략 변경됨](https://v3-migration.vuejs.org/breaking-changes/attribute-coercion.html)**
 - **(breaking) [일부 transition classes의 이름이 변경되었습니다.](https://v3-migration.vuejs.org/breaking-changes/transition.html)**
-- **(breaking) `[<TransitionGroup>`은 이제 기본적으로 wrapper element를 렌더링하지 않습니다.](https://v3-migration.vuejs.org/breaking-changes/transition-group.html)**
+- **(breaking) [`<TransitionGroup>`은 이제 기본적으로 wrapper element를 렌더링하지 않습니다.](https://v3-migration.vuejs.org/breaking-changes/transition-group.html)**
 - **(breaking) [배열을 관찰할 때 배열이 교체될 때만 콜백이 트리거됩니다. 예외로 트리거해야 하는 경우 `deep` 옵션을 지정해야 합니다.](https://v3-migration.vuejs.org/breaking-changes/watch.html)**
 - **특별한 directives가 없는 `<template>` tags(`v-if/else-if/else`, `v-for` 또는 `v-slot`)는 이제 일반 element로 처리되며 내부 content 를 렌더링하는 대신 default `<template>` element가 됩니다.**
 - **(breaking) [Mounted된 application은 mounted element를 대체하지 않습니다.](https://v3-migration.vuejs.org/breaking-changes/mount-changes.html)**
