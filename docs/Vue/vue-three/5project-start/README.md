@@ -56,7 +56,7 @@
 
  - Vue.js 애플리케이션 디버깅을 위한 Chrome 브라우저 확장 프로그램( Vue3 지원 다운로드)
 
-****Vue.js를 위한 VSCode Plugins****
+**Vue.js를 위한 VSCode Plugins**
 
  
 
@@ -315,11 +315,11 @@ $attrs이 명시적으로 바인딩된 경우 경고가 표시되지 않습니�
 </template>
 ```
 
-****JavaScript에서 Non-Prop 속성 접근****
+**JavaScript에서 Non-Prop 속성 접근**
 
 `setup()` 함수의 `context.attrs` 속성으로 노출됩니다 .
 
-1. ****Top-level `await`**
+1. **Top-level `await`**
 
  npm i axios
 
