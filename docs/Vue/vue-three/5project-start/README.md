@@ -112,7 +112,7 @@ export default defineConfig({
 - IDE지원: Vetur -> Volar
 - TypeScript는 사용X (하고싶으면 논의)
 - ESLint, Prettier 설정 [https://www.gymcoding.co/eslint-prettier](https://www.gymcoding.co/eslint-prettier) 참고
-1. **프로젝트 구조**
+2. **프로젝트 구조**
 
 ```bash
 ├── node_modules
@@ -142,7 +142,7 @@ export default defineConfig({
 └── vite.config.js
 ```
 
-1. **Vue3 어플리케이션을 만들기 위한 방법 : Composition API사용**
+3. **Vue3 어플리케이션을 만들기 위한 방법 : Composition API사용**
 
 예시 
 
@@ -208,7 +208,7 @@ defineExpose({
 
 [**Composition API VS Options API](https://www.gymcoding.co/options-api-vs-composition-api) 참고**
 
-1. **Component 사용** `PascalCased` **로 통일**
+4. **Component 사용** `PascalCased` **로 통일**
 
 컴포넌트는 `template` 에서 사용 가능합니다.
 
@@ -251,12 +251,12 @@ export default {
 
  속성에 값을 전달할 때는 `kebab-case`를 사용하는 것을 [권장](https://vuejs.org/guide/components/props.html#props-declaration)합니다.
 
-1. **Composable 함수명은 'use'로 시작하는게 규칙입니다**.
-2. **Stores는 애플리케이션 전역에서 접근할 수 있는 데이터를 포함해야 합니다. ex)사용자 정보**
-3. **Store를 정의할때 `defineStore()` 를 사용하여 정의합니다. id 값은 `use…` 로 지정하는 것이 관용적으로 만들기 위한 composables전반에 걸친 규칙입니다.  [참고](https://www.gymcoding.co/store)**
-4. **한번만 사용하는 컴포넌트는 The~~~로 네이밍합니다 (ex.  TheHeader)**
+5. **Composable 함수명은 'use'로 시작하는게 규칙입니다**.
+6. **Stores는 애플리케이션 전역에서 접근할 수 있는 데이터를 포함해야 합니다. ex)사용자 정보**
+7. **Store를 정의할때 `defineStore()` 를 사용하여 정의합니다. id 값은 `use…` 로 지정하는 것이 관용적으로 만들기 위한 composables전반에 걸친 규칙입니다.  [참고](https://www.gymcoding.co/store)**
+8. **한번만 사용하는 컴포넌트는 The~~~로 네이밍합니다 (ex.  TheHeader)**
 
-1. **emit**
+9. **emit**
 
 ```jsx
 export default {
@@ -283,7 +283,7 @@ export default {
 // 또한 Vue가 **[Non-Prop 속성](https://vuejs.org/guide/components/attrs.html#v-on-listener-inheritance)에서 알려진 리스너를 제외할 수 있습니다 .**
 ```
 
-1. 여러 루트노드 속성상속 
+10. 여러 루트노드 속성상속 
 
  **단일 루트 요소**가 있는 컴포넌트와 달리 **여러 루트 요소**가 있는 컴포넌트에는 자동으로 **Non-Prop 속성**이 상속되지 않습니다. 만약 명시적으로 `$attrs`를 바인딩 하지 않을 경우 런타입 경고가 발생됩니다.
 
@@ -319,7 +319,7 @@ $attrs이 명시적으로 바인딩된 경우 경고가 표시되지 않습니�
 
 `setup()` 함수의 `context.attrs` 속성으로 노출됩니다 .
 
-1. **Top-level `await`**
+11. **Top-level `await`**
 
  npm i axios
 
@@ -352,4 +352,4 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 </script>
 ```
 
-1. **동적 컴포넌트**
+12. **동적 컴포넌트**
