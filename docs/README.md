@@ -11,8 +11,8 @@
 
 **Frontend**
 
-- `JavaScript` `Jquery` `Vue`
-- `HTML/CSS`
+- `JavaScript` `Jquery` `Vue2` `Vue3` `Vuetify` `bootstrap`
+- `HTML/CSS` 
 
 **Backend**
 
