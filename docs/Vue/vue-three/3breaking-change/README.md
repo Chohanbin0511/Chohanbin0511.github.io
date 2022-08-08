@@ -62,9 +62,9 @@ Vue 2의 모든 Vue 3 주요 변경 사항
 ## 7. Removed APIs (**제거된 API)**
 
 - **[`v-on` 수정자로 `keyCode` 지원](https://v3-migration.vuejs.org/breaking-changes/keycode-modifiers.html)**
-- [**$on, $off and $once instance methods**](https://v3-migration.vuejs.org/breaking-changes/events-api.html)
-- [**Filters**](https://v3-migration.vuejs.org/breaking-changes/filters.html)
-- [**Inline templates attributes**](https://v3-migration.vuejs.org/breaking-changes/inline-template-attribute.html)
+- **[$on, $off and $once instance methods](https://v3-migration.vuejs.org/breaking-changes/events-api.html)**
+- **[Filters](https://v3-migration.vuejs.org/breaking-changes/filters.html)**
+- **[Inline templates attributes](https://v3-migration.vuejs.org/breaking-changes/inline-template-attribute.html)**
 - **[`$children` instance property](https://v3-migration.vuejs.org/breaking-changes/children.html)**
 - **[`propsData` option](https://v3-migration.vuejs.org/breaking-changes/props-data.html)**
 - **`$destroy` instance method. 사용자는 더 이상 개별 Vue components의 Lifecycle를 수동으로 관리해서는 안 됩니다.**
