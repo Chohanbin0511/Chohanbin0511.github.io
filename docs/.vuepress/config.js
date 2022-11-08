@@ -15,7 +15,7 @@ module.exports = {
     nav: [
       { text: "Github", link: "https://github.com/Chohanbin0511" },
       { text: "개발가이드", link: "/Guide/" },
-      { text: "VUE", link: "/Vue/" },
+      { text: "FrontEnd", link: "/Vue/" },
       { text: "JoHeritage", link: "/Joheritage/" },
     ],
     sidebar: createSidebar(),
