@@ -1,4 +1,4 @@
-const routes = ["Guide", "Vue", "Joheritage"];
+const routes = ["Toyproject", "Vue", "Joheritage"];
 
 const createSidebar = () => {
   const sidebar = {};
@@ -14,7 +14,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "Github", link: "https://github.com/Chohanbin0511" },
-      { text: "개발가이드", link: "/Guide/" },
+      { text: "ToyProject", link: "/Toyproject/" },
       { text: "FrontEnd", link: "/Vue/" },
       { text: "JoHeritage", link: "/Joheritage/" },
     ],
