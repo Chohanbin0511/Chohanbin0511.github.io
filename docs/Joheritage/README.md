@@ -1,37 +1,5 @@
-# 이미지 (TEST)
+# 헤리
+## 6Kg 말티푸 생각보다 거대하지
 
-<center>
-  <img
-    src="~@source/.vuepress/public/images/20220602_heri_01.jpg"
-    width="300"
-    height="200"
-  />
-</center>
-<center>
-  <img
-    src="~@source/.vuepress/public/images/20220602_heri_02.jpg"
-    width="300"
-    height="300"
-  />
-</center>
-<center>
-  <img
-    src="~@source/.vuepress/public/images/20220602_heri_03.jpg"
-    width="300"
-    height="300"
-  />
-</center>
-<center>
-  <img
-    src="~@source/.vuepress/public/images/20220602_heri_04.jpg"
-    width="300"
-    height="300"
-  />
-</center>
-<center>
-  <img
-    src="~@source/.vuepress/public/images/20221017_heri_05.jpg"
-    width="300"
-    height="300"
-  />
-</center>
+<br/>
+<HeriImgList/>

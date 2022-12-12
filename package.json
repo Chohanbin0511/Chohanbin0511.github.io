@@ -22,12 +22,16 @@
   },
   "homepage": "https://github.com/Chohanbin0511/Chohanbin0511.github.io#readme",
   "devDependencies": {
+    "@vue/compiler-dom": "^3.2.45",
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/plugin-nprogress": "^1.9.7",
+    "@vuepress/plugin-register-components": "^1.9.7",
     "@vuepress/plugin-search": "^1.9.7",
+    "@vuepress/utils": "^2.0.0-alpha.1",
     "vuepress": "^1.9.7"
   },
   "dependencies": {
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "vuetify": "^2.6.12"
   }
 }

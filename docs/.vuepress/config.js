@@ -1,3 +1,4 @@
+const { path } = require('@vuepress/utils');
 const routes = ["Toyproject", "Vue", "Joheritage"];
 
 const createSidebar = () => {
@@ -44,12 +45,17 @@ module.exports = {
       },
     ],
     ["vuepress-plugin-code-copy"],
-    // ["@vuepress/pagination"], //다음글, 이전글
     [
       "@vuepress/search",
       {
         //검색창
         searchMaxSuggestions: 10,
+      },
+    ],
+    [
+      '@vuepress/register-components',
+      {
+        componentsDir: path.resolve(__dirname, '../components'),
       },
     ],
     [
