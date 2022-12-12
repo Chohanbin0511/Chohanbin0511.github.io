@@ -2,35 +2,35 @@
 
 <center>
   <img
-    src="~@source/.vuepress/public/image/20220602_heri_01.jpg"
+    src="~@source/.vuepress/public/images/20220602_heri_01.jpg"
     width="100"
     height="200"
   />
 </center>
 <center>
   <img
-    src="~@source/.vuepress/public/image/20220602_heri_02.jpg"
+    src="~@source/.vuepress/public/images/20220602_heri_02.jpg"
     width="100"
     height="200"
   />
 </center>
 <center>
   <img
-    src="~@source/.vuepress/public/image/20220602_heri_03.jpg"
+    src="~@source/.vuepress/public/images/20220602_heri_03.jpg"
     width="100"
     height="200"
   />
 </center>
 <center>
   <img
-    src="~@source/.vuepress/public/image/20220602_heri_04.jpg"
+    src="~@source/.vuepress/public/images/20220602_heri_04.jpg"
     width="100"
     height="200"
   />
 </center>
 <center>
   <img
-    src="~@source/.vuepress/public/image/20220602_heri_05.jpg"
+    src="~@source/.vuepress/public/images/20220602_heri_05.jpg"
     width="100"
     height="200"
   />
