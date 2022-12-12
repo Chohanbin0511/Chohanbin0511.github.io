@@ -30,7 +30,7 @@
 </center>
 <center>
   <img
-    src="~@source/.vuepress/public/images/20220602_heri_05.jpg"
+    src="~@source/.vuepress/public/images/20221017_heri_05.jpg"
     width="100"
     height="200"
   />
