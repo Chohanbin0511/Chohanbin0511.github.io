@@ -16,7 +16,7 @@
 
 **Backend**
 
-- `Java` `Spring` `MVC`  `Eclipse`  `IntelliJ` `Vscode` `Subversion` `Git`
+- `Java` `Spring`
 
 **DevOpts**
 

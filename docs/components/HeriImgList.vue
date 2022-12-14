@@ -32,7 +32,11 @@ export default {
 				{ title:"한손에 헤리", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20220602_heri_02.jpg")},
 				{ title:"형아 달려", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20220602_heri_03.jpg")},
 				{ title:"늠름하지", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20220602_heri_04.jpg")},
-				{ title:"모해?", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20221017_heri_05.jpg")},
+				{ title:"돌프와 함께", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20221214_heri_06.jpg")},
+				{ title:"우주비행", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20221214_heri_07.jpg")},
+				{ title:"모해?", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20221214_heri_08.jpg")},
+				{ title:"뿔헤리", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20221214_heri_09.jpg")},
+				{ title:"삼각형", text: "내용입니다.", place: "장소입니다", date: "시간",imgUrl : require("./img/20221214_heri_10.jpg")},
 			]
     };
   },
