@@ -30,7 +30,7 @@ vite는 HTTP 헤더를 이용해 요청한 디펜던시를 브라우저에서 �
 
 ---
 
-### ****Hot Module Replacement****
+### **Hot Module Replacement**
 
 vite는 기본적으로 ESM를 통해 **[HMR API](https://vitejs-kr.github.io/guide/api-hmr.html)**를 제공합니다. HMR 기능이 있는 프레임워크는 API를 활용하여 페이지를 다시 로드하거나 애플리케이션 상태를 날려버리지 않고 즉각적이고 정확한 업데이트를 제공할 수 있습니다. vite는 **[Vue Single File Components](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)**, **[React Fast Refresh](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)** 또는 **[@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite)**과 같은 First-party HMR* 모듈을 제공하고 있습니다. (* Vite에서 직접 제공하는 HMR 모듈)
 

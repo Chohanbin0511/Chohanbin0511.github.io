@@ -7,7 +7,7 @@
 예 - (Webpack, Rollup , Parcel)
 
 <aside>
-💡 **ES Modules** **(ESM)** 이란?
+💡 **ES Modules**  **(ESM)** 이란?
 - ES6에 도입된 모듈 시스템, 
 **번들링** 이란? 
 - 모듈화된 source code를 브라우저에서 실행할 수 있는 파일로 한데 묶어주는 작업을 뜻합니다.
@@ -48,8 +48,6 @@ VIte 는 이문제를 **Dependencies** 그리고 **Source Code** 두 가지 카�
 - **Source Code** : JSX, CSS 또는 Vue/Svelte 컴포넌트와 같이 컴파일리이 필요하고, 수정 또한 매우 잦은 **Non-plain JavaScript** 소스코드는 어떻게 할까요? ( 이들 역시 특정 시점에서 모두 불러올 필요는 없습니다.)  
 
 Vite는 **[Native ESM](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules)**을 이용해 소스 코드를 제공하도록 하고 있습니다. 다시 말해, 브라우저가 곧 번들러 입니다. vite는 브러우저의 판단 아래 특정 모듈에 대한 소스 코드를 요청하면 이를 전달할 뿐입니다. 따라서 조건부 동적 Import 이후의 코드는 현재 화면에서 실제로 사용이 되어야 처리가 됩니다.
-
-![Untitled](Vite%E1%84%85%E1%85%B3%E1%86%AF%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AB%20%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%B2%201d452fe282a04b46a7ba77d686f3e0a1/Untitled.png)
 
 ### 느렸던 소스 코드 갱신
 
