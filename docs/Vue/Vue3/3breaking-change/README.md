@@ -15,11 +15,9 @@ Vue 2의 모든 Vue 3 주요 변경 사항
 - **(breaking) [`<template v-for>` 및 non-`v-for` node의 `key` 사용이 변경되었습니다.](https://v3-migration.vuejs.org/breaking-changes/key-attribute.html)**
 - **(breaking)[동일한 요소에 사용될 때 `v-if` 및 `v-for` 우선순위가 변경됨](https://v3-migration.vuejs.org/breaking-changes/v-if-v-for.html)**
 
-<aside>
 💡 2.x에서 동일한 요소에 v-if와 v-for를 사용할 때 v-for가 우선합니다.
 3.x에서 v-if는 항상 v-for보다 우선 순위가 높습니다.
 
-</aside>
 
 - **(breaking) [`v-bind="object"`는 이제 순서를 구분합니다](https://v3-migration.vuejs.org/breaking-changes/v-bind.html)**
 - **(breaking) [`v-on:event.native` 수정자가 제거되었습니다.](https://v3-migration.vuejs.org/breaking-changes/v-on-native-modifier-removed.html)**

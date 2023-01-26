@@ -63,17 +63,12 @@ Function Composition을 기반으로 하는 API Style에도 불구하고 **Comp
 
 Composition API의 주요 이점은 **[컴포저블 함수](https://vuejs.org/guide/reusability/composables.html)** 의 형태로 깨끗하고 효율적인 논리 재사용이 가능합니다. 옵션 API의 기본 로직 재사용 메커니즘인 **[mixins의 모든 단점](https://vuejs.org/guide/reusability/composables.html#vs-mixins)**을 해결 합니다. 
 
-<aside>
 💡 Vue 3에서는 더 이상 믹스인을 사용하지 않는 것이 좋습니다. 이 기능은 마이그레이션 및 친숙함을 위해서만 유지됩니다.
 
-</aside>
 
 Composition API의 로직 재사용 기능은  **[VueUse](https://vueuse.org/)** , 컴포저블 유틸리티 컬렉션 과 같은 인상적인 커뮤니티 프로젝트를 탄생시켰습니다. 또한 상태 저장 타사 서비스 또는 라이브러리를 Vue의 반응성 시스템(예: **[immutable data](https://vuejs.org/guide/extras/reactivity-in-depth.html#immutable-data) ,** **[state machines](https://vuejs.org/guide/extras/reactivity-in-depth.html#state-machines) ,[RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs)**)에 쉽게 통합하기 위한 깨끗한 메커니즘의 역할도 합니다 .
 
-<aside>
 💡 Vue Use에서 Vite + Vue 3 , Nuxt 3 + Vue 3, 등등 데모 버젼 확인이 가능합니다.
-
-</aside>
 
 **보다 유연한 코드 구성 (More Flexible Code Organization)**
 
@@ -283,10 +278,7 @@ import MyComponent from './MyComponent.vue'
 
 `MyComponent`변수로 참조됩니다 . JSX를 사용한 적이 있는 경우 e mental model과 유사합니다. 해당하는 kebab-case `<my-component>`도 템플릿에서 작동하지만 일관성을 위해 PascalCase 구성 요소 태그를 사용하는 것이 좋습니다.  또한 기본 사용자 정의 요소와 구별하는 데 도움이 됩니다.
 
-<aside>
 💡 vue2 에선 kebab-case 사용했지만 vue3에선 코드 일관성을위해 PascalCase 사용
-
-</aside>
 
 ★ ****동적 구성요소****
 
@@ -465,10 +457,8 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 
 또한 awaited 표현식은 `await` 후 현재 구성 요소 인스턴스 컨텍스트를 유지하는 형식으로 자동 컴파일됩니다.
 
-<aside>
 💡 `async setup()`은 현재 아직 실험적인 기능인 `Suspense`와 함께 사용해야 합니다. 향후 이를 마무리하고 문서화할 계획입니다. 하지만 지금 궁금하다면 [테스트](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts)를 참조하여 작동 방식을 확인할 수 있습니다.
 
-</aside>
 
 ---
 
@@ -614,10 +604,8 @@ component에는 modal의 opend을 트리거하는 `<button>`과 modal의 내용�
 
 [**Modal 예시**](https://vuejs.org/examples/#modal)
 
-<aside>
 💡 `<Teleport>` component가 mounted 될 때 대상으로의 Teleport는 이미 DOM에 있어야 합니다. 이상적으로는 전체 Vue 애플리케이션 외부의 element여야 합니다. Vue에서 렌더링한 다른 element를 대상으로 하는 경우 해당 요소가 `<Teleport>` 전에 moutned 되었는지 확인해야 합니다.
 
-</aside>
 
 ---
 
@@ -937,10 +925,8 @@ Custom 속성은 인라인 스타일을 통해 구성 요소의 root element에 
 ---
 ## 9. Suspense
 
-<aside>
 💡 `<Suspense>` 는 실험적인 기능입니다. 안정적인 상태를 보장하지 않으며, 이전에 API가 변경될 수 있습니다.
 
-</aside>
 
 `<Suspense>`구성 요소 트리에서 비동기 종속성을 조정하기 위한 기본 제공 Component입니다. 
 

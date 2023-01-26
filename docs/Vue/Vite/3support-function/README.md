@@ -16,11 +16,9 @@ import { someMethod } from 'my-dep'
 
 1. Vite를 통해 ESM 스타일로 사전에 번들링 된 CommonJS 및 UMD 모듈. 이 과정은 EsBuild를 통해 이루어지며, JavaScript 기반의 다른 번들러보다 빠른 Cold-Start가 가능합니다.
 
-<aside>
 💡 **UMD** 모듈 이란?
 -  Universal Module Definition: CommonJS와 AMD 스타일의 모듈을 둘 다 지원하는 모듈 형태
 
-</aside>
 
 1.  `/node_modules/.vite/deps/my-dep.js?v=f3sf2ebd`와 같이 URL을 이용해 ESM을 지원하는 브라우저에서 모듈을 가져올 수 있도록 `import` 구문을 수정.
 
